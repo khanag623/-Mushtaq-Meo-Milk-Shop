@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --emerald-deep: #064e1b;
+    --emerald-rich: #0a6324;
+    --gold-accent: #d4ac0d;
+    --milk-white: #fafaf7;
+    --aqua-primary: #0284c7;
+    --aqua-surface: #eef9fd;
+  }
+
+  html {
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    scroll-padding-top: 5rem;
+  }
+}
+
+.font-urdu {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  line-height: 2.15;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.glass-card-dark {
+  background: rgba(6, 78, 27, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

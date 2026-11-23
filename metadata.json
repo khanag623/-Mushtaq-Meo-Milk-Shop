@@ -1,0 +1,6 @@
+{
+  "name": "Mushtaq Meo Milk Shop | مشتاق میو ملک شاپ",
+  "description": "100% Pure & Fresh Dairy & Clean Filtered Water Supply at Street 25, Ghori Town Main Road, Islamabad. Fresh Milk, Desi Yogurt, Fresh Malai, Pure Butter, Desi Ghee, and Filtered Water.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
