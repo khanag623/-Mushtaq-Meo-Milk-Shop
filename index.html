@@ -1,278 +1,150 @@
 <!DOCTYPE html>
 <html lang="ur">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mushtaq Meo Milk Shop | مشتاق میو ملک شاپ</title>
-    <link href="https://googleapis.com" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #064e1b;
-            --primary-light: #0e6f29;
-            --gold: #d4ac0d;
-            --gold-light: #f9e79f;
-            --water: #1b4f72;
-            --bg: #f4f8f5;
-            --text: #1c2833;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-        .urdu { font-family: 'Noto Nastaliq Urdu', serif; line-height: 2.1; }
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(6, 78, 27, 0.96);
-            backdrop-filter: blur(8px);
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--gold);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        nav .brand { color: var(--gold-light); font-weight: 700; font-size: 1.05rem; text-decoration: none; }
-        nav .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 14px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        header {
-            background: radial-gradient(circle at top right, #117a30, #043913);
-            color: white;
-            text-align: center;
-            padding: 50px 15px 45px;
-            border-bottom: 5px solid var(--gold);
-        }
-        .quality-tag {
-            display: inline-block;
-            background: rgba(212, 172, 13, 0.2);
-            border: 1px solid var(--gold);
-            color: var(--gold-light);
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        header h1 { font-size: 2.4rem; color: var(--gold-light); margin-bottom: 5px; }
-        header h2 { font-size: 1.65rem; font-weight: 700; margin-bottom: 10px; }
-        header p { font-size: 1rem; opacity: 0.95; max-width: 650px; margin: 0 auto; }
-        .address-pill {
-            display: inline-block;
-            background: #fff;
-            color: var(--primary);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 700;
-            margin-top: 18px;
-            font-size: 0.9rem;
-        }
-        .container { max-width: 1020px; margin: 30px auto; padding: 0 16px; }
-        .section-header { text-align: center; margin: 35px 0 22px; }
-        .section-header h2 { color: var(--primary); font-size: 1.6rem; display: inline-block; border-bottom: 3px solid var(--gold); padding-bottom: 5px; }
-        .section-header p { color: #555; font-size: 0.9rem; margin-top: 5px; }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 24px 20px;
-            text-align: center;
-            box-shadow: 0 8px 22px rgba(0,0,0,0.06);
-            border-top: 5px solid var(--primary-light);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .card.water-card { border-top-color: #2980b9; background: linear-gradient(180deg, #f2f9ff 0%, #ffffff 100%); }
-        .icon-circle {
-            width: 64px;
-            height: 64px;
-            background: #eef7f0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 14px;
-            border: 2px solid #c3e6cb;
-        }
-        .water-card .icon-circle { background: #e1f0fa; border-color: #aed6f1; }
-        .card h3 { color: var(--primary); font-size: 1.25rem; margin-bottom: 4px; }
-        .water-card h3 { color: var(--water); }
-        .card p { color: #555; font-size: 0.9rem; margin-bottom: 12px; }
-        .water-timing {
-            background: #d6eaf8;
-            color: #154360;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 14px;
-            border: 1px solid #85c1e9;
-        }
-        .wa-buttons { display: flex; flex-direction: column; gap: 8px; }
-        .btn-wa {
-            display: block;
-            background: #25D366;
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 12px;
-            border-radius: 9px;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-        .btn-wa.secondary { background: #128C7E; }
-        .btn-call-water {
-            display: block;
-            background: #2471a3;
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 12px;
-            border-radius: 9px;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-        .order-box {
-            background: #fff;
-            padding: 28px 22px;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
-            border: 1px solid #d4efdf;
-        }
-        .form-group { margin-bottom: 16px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 6px; color: #222; font-size: 0.95rem; }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 9px;
-            font-size: 0.95rem;
-            font-family: inherit;
-        }
-        .radio-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
-        .radio-label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: #eef7f0;
-            padding: 10px 14px;
-            border-radius: 9px;
-            border: 1px solid #a9dfbf;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.88rem;
-        }
-        .submit-btn {
-            width: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: #fff;
-            border: none;
-            padding: 14px;
-            font-size: 1.05rem;
-            font-weight: 700;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 8px;
-        }
-        .contact-section {
-            background: linear-gradient(135deg, #043913, #0b5e20);
-            color: #fff;
-            padding: 32px 20px;
-            border-radius: 16px;
-            text-align: center;
-            margin-top: 35px;
-            border-top: 5px solid var(--gold);
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .contact-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 18px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .contact-card.water-contact {
-            background: rgba(41, 128, 185, 0.28);
-            border: 1px solid #85c1e9;
-        }
-        .contact-card h4 { color: var(--gold-light); font-size: 1.15rem; margin-bottom: 4px; }
-        .contact-card span { display: block; font-size: 0.8rem; opacity: 0.9; margin-bottom: 12px; }
-        .contact-card a {
-            display: inline-block;
-            padding: 8px 14px;
-            margin: 3px;
-            border-radius: 7px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: #fff;
-        }
-        .btn-call { background: #e67e22; }
-        .btn-chat { background: #25D366; }
-        .float-wa {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25D366;
-            color: #fff;
-            padding: 12px 18px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            z-index: 999;
-        }
-        footer { text-align: center; padding: 25px 15px 70px; color: #555; font-size: 0.85rem; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mushtaq Meo Milk Shop | مشتاق میو ملک شاپ</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif}
+body{background:#f4f8f5;color:#1c2833;line-height:1.6}
+header{background:#064e1b;color:#fff;text-align:center;padding:35px 15px;border-bottom:5px solid #d4ac0d}
+header h1{font-size:2.1rem;color:#f9e79f;margin-bottom:5px}
+header h2{font-size:1.5rem;margin-bottom:8px}
+.addr{display:inline-block;background:#fff;color:#064e1b;padding:7px 16px;border-radius:20px;font-weight:700;margin-top:12px;font-size:.9rem}
+.container{max-width:950px;margin:20px auto;padding:0 15px}
+.title{text-align:center;color:#064e1b;font-size:1.4rem;margin:25px 0 15px;border-bottom:2px solid #d4ac0d;padding-bottom:5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px}
+.card{background:#fff;border-radius:12px;padding:20px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.08);border-top:4px solid #0e6f29}
+.water{border-top-color:#2980b9;background:#f2f9ff}
+.card h3{color:#064e1b;font-size:1.2rem;margin-bottom:5px}
+.water h3{color:#1b4f72}
+.card p{color:#555;font-size:.9rem;margin-bottom:12px}
+.time{background:#d6eaf8;color:#154360;padding:7px;border-radius:8px;font-size:.85rem;font-weight:700;margin-bottom:12px}
+.btn{display:block;color:#fff;text-decoration:none;padding:11px;border-radius:8px;font-weight:700;font-size:.9rem;margin-top:7px}
+.wa1{background:#25D366}
+.wa2{background:#128C7E}
+.call{background:#e67e22}
+.form-box{background:#fff;padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.form-box input,.form-box textarea{width:100%;padding:11px;margin:6px 0 14px;border:1px solid #ccc;border-radius:8px;font-size:.95rem}
+.radio-box label{display:block;background:#eef7f0;padding:10px;border-radius:8px;margin-bottom:8px;font-weight:600}
+.sub-btn{width:100%;background:#064e1b;color:#fff;border:none;padding:14px;font-size:1.05rem;font-weight:700;border-radius:8px;margin-top:10px}
+.contact{background:#064e1b;color:#fff;padding:25px 15px;border-radius:12px;text-align:center;margin-top:25px}
+.c-card{background:rgba(255,255,255,.12);padding:15px;border-radius:10px;margin-top:12px}
+.c-card h4{color:#f9e79f;font-size:1.15rem}
+footer{text-align:center;padding:20px;color:#555;font-size:.85rem}
+</style>
 </head>
 <body>
 
-<nav>
-    <a href="#" class="brand">🥛 Mushtaq Meo</a>
-    <div class="nav-links">
-        <a href="#products">Products</a>
-        <a href="#order">Order</a>
-        <a href="#contact">Contact</a>
-    </div>
-</nav>
-
 <header>
-    <div class="quality-tag">★ 100% PURE & FRESH ★</div>
-    <h1 class="urdu">مشتاق میو ملک شاپ</h1>
-    <h2>Mushtaq Meo Milk Shop</h2>
-    <p class="urdu">خالص اور تازہ دودھ، دیسی دہی، مکھن، دیسی گھی اور صاف فلٹر پانی کی سپلائی</p>
-    <div class="address-pill">📍 Street 25, Ghori Town Main Road, Islamabad</div>
+<h1>مشتاق میو ملک شاپ</h1>
+<h2>Mushtaq Meo Milk Shop</h2>
+<p>خالص دودھ، دہی، ملائی، مکھن، دیسی گھی اور صاف فلٹر پانی کی سپلائی</p>
+<div class="addr">📍 Street 25, Ghori Town Main Road, Islamabad</div>
 </header>
 
 <div class="container">
-    <div class="section-header" id="products">
-        <h2>ہماری مصنوعات | Our Products</h2>
-        <p>فوری آرڈر کے لیے نیچے دیے گئے واٹس ایپ یا کال بٹن دبائیں</p>
-    </div>
+<h2 class="title">ہماری مصنوعات | Our Products</h2>
+<div class="grid">
 
-    <div class="grid">
-        <div class="card">
-            <div>
-                <div class="icon-circle">🥛</div>
-                <h3>Fresh Milk | <span class="urdu">تازہ دودھ</span></h3>
-                <p>100% خالص اور تازہ دودھ دستیاب ہے</p>
-            </div>
-            <div class="wa-buttons">
-                
+<div class="card">
+<h3>🥛 Fresh Milk | تازہ دودھ</h3>
+<p>100% خالص اور تازہ دودھ</p>
+<a href="https://wa.me." class="btn wa1">💬 WhatsApp: +92 341 2881746</a>
+<a href="https://wa.me." class="btn wa2">💬 WhatsApp: 0327-5377380</a>
+</div>
+
+<div class="card">
+<h3>🥣 Desi Yogurt | دیسی دہی</h3>
+<p>گاڑھا اور خالص دیسی دہی</p>
+<a href="https://wa.me." class="btn wa1">💬 WhatsApp: +92 341 2881746</a>
+<a href="https://wa.me." class="btn wa2">💬 WhatsApp: 0327-5377380</a>
+</div>
+
+<div class="card">
+<h3>🍨 Fresh Malai | تازہ ملائی</h3>
+<p>خالص دودھ کی تازہ ملائی</p>
+<a href="https://wa.me." class="btn wa1">💬 WhatsApp: +92 341 2881746</a>
+<a href="https://wa.me." class="btn wa2">💬 WhatsApp: 0327-5377380</a>
+</div>
+
+<div class="card">
+<h3>🧈 Pure Butter | خالص مکھن</h3>
+<p>تازہ اور خالص دیسی مکھن</p>
+<a href="https://wa.me." class="btn wa1">💬 WhatsApp: +92 341 2881746</a>
+<a href="https://wa.me." class="btn wa2">💬 WhatsApp: 0327-5377380</a>
+</div>
+
+<div class="card">
+<h3>🍯 Desi Ghee | خالص دیسی گھی</h3>
+<p>100% خالص دیسی گھی</p>
+<a href="https://wa.me." class="btn wa1">💬 WhatsApp: +92 341 2881746</a>
+<a href="https://wa.me." class="btn wa2">💬 WhatsApp: 0327-5377380</a>
+</div>
+
+<div class="card water">
+<h3>💧 Filtered Water Supply | فلٹر پانی</h3>
+<p>صاف پینے کے فلٹر پانی کی سپلائی</p>
+<div class="time">⏰ صبح 10:30 سے رات 10:30 تک سپلائی دستیاب ہے<br>کسی بھی وقت آرڈر کر سکتے ہیں</div>
+<a href="https://wa.me." class="btn wa1">💬 Water WhatsApp: 0328-9795134</a>
+<a href="tel:+923289795134" class="btn call">📞 Water Call: 0328-9795134</a>
+</div>
+
+</div>
+
+<h2 class="title">فوری آرڈر فارم | Quick Order Form</h2>
+<div class="form-box">
+<label>آپ کا نام (Name):</label>
+<input type="text" id="n" placeholder="اپنا نام لکھیں">
+<label>مکمل پتہ (Address):</label>
+<input type="text" id="a" placeholder="گلی نمبر، غوری ٹاؤن اسلام آباد">
+<label>سامان اور مقدار (Items):</label>
+<textarea id="i" rows="3" placeholder="مثلاً: 2 کلو دودھ، 1 کلو دہی"></textarea>
+<div class="radio-box">
+<label><input type="radio" name="w" value="923412881746" checked> +92 341 2881746 (Dairy)</label>
+<label><input type="radio" name="w" value="923275377380"> 0327-5377380 (Dairy)</label>
+<label><input type="radio" name="w" value="923289795134"> 0328-9795134 (Water Supply)</label>
+</div>
+<button type="button" class="sub-btn" onclick="sendOrder()">واٹس ایپ پر آرڈر بھیجیں</button>
+</div>
+
+<div class="contact">
+<h2>رابطہ اور پتہ | Contact</h2>
+<p>📍 Street 25, Ghori Town Main Road, Islamabad</p>
+<div class="c-card">
+<h4>0309-4700485 (Call Only | صرف کال)</h4>
+<a href="tel:+923094700485" class="btn call">📞 Call Now</a>
+</div>
+<div class="c-card">
+<h4>+92 341 2881746 (WhatsApp & Call)</h4>
+<a href="tel:+923412881746" class="btn call">📞 Call</a>
+<a href="https://wa.me!" class="btn wa1">💬 WhatsApp</a>
+</div>
+<div class="c-card">
+<h4>0327-5377380 (WhatsApp & Call)</h4>
+<a href="tel:+923275377380" class="btn call">📞 Call</a>
+<a href="https://wa.me!" class="btn wa1">💬 WhatsApp</a>
+</div>
+<div class="c-card">
+<h4>0328-9795134 (Water Supply: 10:30 AM - 10:30 PM)</h4>
+<a href="tel:+923289795134" class="btn call">📞 Call</a>
+<a href="https://wa.me" class="btn wa1">💬 WhatsApp</a>
+</div>
+</div>
+</div>
+
+<footer>© 2026 Mushtaq Meo Milk Shop | مشتاق میو ملک شاپ</footer>
+
+<script>
+function sendOrder(){
+var n=document.getElementById("n").value.trim();
+var a=document.getElementById("a").value.trim();
+var i=document.getElementById("i").value.trim();
+var w=document.querySelector('input[name="w"]:checked').value;
+if(!n||!a||!i){alert("براہ کرم نام، پتہ اور سامان درج کریں");return;}
+var m="*Assalam-o-Alaikum Mushtaq Meo Milk Shop!*%0A*Name:* "+encodeURIComponent(n)+"%0A*Address:* "+encodeURIComponent(a)+"%0A*Order:* "+encodeURIComponent(i);
+window.open("https://wa.me"+w+"?text="+m,"_blank");
+}
+</script>
+</body>
+</html>
